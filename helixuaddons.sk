@@ -148,8 +148,8 @@ on join:
 on load:
     loop all players:
         if loop-player has permission "helixu.staffchat":
-            send "&b[STAFF] &cHelixuAddons&f: HelixuAddons by ginlang##1111 (re)loaded!" to loop-player
-    send "&b[STAFF] &cHelixuAddons&f: HelixuAddons by ginlang##1111 (re)loaded!" to console
+            send "&b[STAFF] &cHelixuAddons&f: HelixuAddons by .ginłang#0001 (re)loaded!" to loop-player
+    send "&b[STAFF] &cHelixuAddons&f: HelixuAddons by .ginłang#0001 (re)loaded!" to console
 
 
 command /stafftodo [<text>]:
@@ -200,7 +200,7 @@ on server ping:
         set motd to "&cMaintenance Mode."
         stop
     if {mm} is not set:
-        set motd to "&cLads Factions &6| &dDaewoo Espero nation"
+        set motd to "&cHelixuAddons was here! &4&l<3"
 
 command /csay [<text>]:
     trigger:
