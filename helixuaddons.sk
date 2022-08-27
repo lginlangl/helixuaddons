@@ -24,6 +24,13 @@ command /hub:
 command /gameupdate:
     permission: helixu.gameupdate
     trigger:
+        loop all players:
+            if loop-player has permission "helixu.staffchat":
+                send "&b[STAFF] %player's prefix%%player's name% &ehas initiated restart &4&lGame Update" to loop-player
+                send "&b[STAFF] %player's prefix%%player's name% &ehas initiated restart &4&lGame Update" to loop-player
+                send "&b[STAFF] %player's prefix%%player's name% &ehas initiated restart &4&lGame Update" to loop-player
+                send "&b[STAFF] %player's prefix%%player's name% &ehas initiated restart &4&lGame Update" to loop-player
+        wait 1 second
         broadcast "&eThis server will restart soon: &bFor a game update"
         broadcast "&eYou have &a30 seconds &eto brace yourself!"
         loop all players:
@@ -48,6 +55,13 @@ command /gameupdate:
 command /maintenance:
     permission: helixu.srestart
     trigger:
+        loop all players:
+            if loop-player has permission "helixu.staffchat":
+                send "&b[STAFF] %player's prefix%%player's name% &ehas initiated restart &4&lMaintenance" to loop-player
+                send "&b[STAFF] %player's prefix%%player's name% &ehas initiated restart &4&lMaintenance" to loop-player
+                send "&b[STAFF] %player's prefix%%player's name% &ehas initiated restart &4&lMaintenance" to loop-player
+                send "&b[STAFF] %player's prefix%%player's name% &ehas initiated restart &4&lMaintenance" to loop-player
+        wait 1 second
         broadcast "&eThis server will restart soon: &bMaintenance"
         broadcast "&eYou have &a30 seconds &eto brace yourself!"
         loop all players:
@@ -73,7 +87,11 @@ command /maintenance:
 
 
 on load:
-    wait 6 hours
+    wait 2 hours
+            loop all players:
+            if loop-player has permission "helixu.staffchat":
+                send "&b[STAFF] Server will automatically restart." to loop-player
+        wait 1 second
     broadcast "&eThis server will restart soon: &bScheduled Reboot"
     broadcast "&eYou have &a30 seconds &eto brace yourself!"
     loop all players:
