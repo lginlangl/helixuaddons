@@ -72,29 +72,29 @@ command /maintenance:
 
 
 
-#on load:
-#    wait 2 hours
-#    broadcast "&eThis server will restart soon: &bScheduled Reboot"
-#    broadcast "&eYou have &a30 seconds &eto brace yourself!"
-#    loop all players:
-#        send title "&e&lSERVER REBOOT!" with subtitle "&aScheduled Reboot &7(in &e30s&7)" to loop-player
-#    wait 20 seconds
-#    broadcast "&eThis server will restart soon: &bScheduled Reboot"
-#    broadcast "&c&lIn 10 seconds!"
-#    wait 5 seconds
-#    broadcast "&eThis server will restart in &c&l5"
-#    wait 1 seconds
-#    broadcast "&eThis server will restart in &c&l4"
-#    wait 1 seconds
-#    broadcast "&eThis server will restart in &c&l3"
-#    wait 1 seconds
-#    broadcast "&eThis server will restart in &c&l2"
-#    wait 1 seconds
-#    broadcast "&eThis server will restart in &c&l1"
-#    wait 1 seconds
-#    loop all players:
-#        kick loop-player due to "&cThe Server is restarting, join back in around 30 seconds."
-#    make console execute command "stop"
+on load:
+    wait 6 hours
+    broadcast "&eThis server will restart soon: &bScheduled Reboot"
+    broadcast "&eYou have &a30 seconds &eto brace yourself!"
+    loop all players:
+        send title "&e&lSERVER REBOOT!" with subtitle "&aScheduled Reboot &7(in &e30s&7)" to loop-player
+    wait 20 seconds
+    broadcast "&eThis server will restart soon: &bScheduled Reboot"
+    broadcast "&c&lIn 10 seconds!"
+    wait 5 seconds
+    broadcast "&eThis server will restart in &c&l5"
+    wait 1 seconds
+    broadcast "&eThis server will restart in &c&l4"
+    wait 1 seconds
+    broadcast "&eThis server will restart in &c&l3"
+    wait 1 seconds
+    broadcast "&eThis server will restart in &c&l2"
+    wait 1 seconds
+    broadcast "&eThis server will restart in &c&l1"
+    wait 1 seconds
+    loop all players:
+        kick loop-player due to "&cThe Server is restarting, join back in around 30 seconds."
+    make console execute command "stop"
 
 command /broadcast [<text>]:
     permission: helixu.broadcast
