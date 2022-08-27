@@ -1,97 +1,15 @@
-command /disall <text>:
-    permission: op
-    trigger:
-        loop all players:
-            make console execute command "displayer %loop-player% %arg-1%"
-
-command /undisall:
-    permission: op
-    trigger:
-        loop all players:
-            make console execute command "undisplayer %loop-player%"
-
-command /sethubloc:
-    permission: op
-    trigger:
-        set {spawnlocation} to location of player
-        message "&3Spawn set to &3%{spawnlocation}%"
-
-command /hub:
-    trigger:
-        teleport player to location of {spawnlocation}
-        message "&6Teleported you to spawn!"
-
-command /gameupdate:
-    permission: helixu.gameupdate
-    trigger:
-        loop all players:
-            if loop-player has permission "helixu.staffchat":
-                send "&b[STAFF] %player's prefix%%player's name% &ehas initiated restart &4&lGame Update" to loop-player
-                send "&b[STAFF] %player's prefix%%player's name% &ehas initiated restart &4&lGame Update" to loop-player
-                send "&b[STAFF] %player's prefix%%player's name% &ehas initiated restart &4&lGame Update" to loop-player
-                send "&b[STAFF] %player's prefix%%player's name% &ehas initiated restart &4&lGame Update" to loop-player
-        wait 1 second
-        broadcast "&eThis server will restart soon: &bFor a game update"
-        broadcast "&eYou have &a30 seconds &eto brace yourself!"
-        loop all players:
-            send title "&e&lSERVER REBOOT!" with subtitle "&aFor a game update &7(in &e30s&7)" to loop-player
-        wait 20 seconds
-        broadcast "&eThis server will restart soon: &bFor a game update"
-        broadcast "&c&lIn 10 seconds!"
-        wait 5 seconds
-        broadcast "&eThis server will restart in &c&l5"
-        wait 1 seconds
-        broadcast "&eThis server will restart in &c&l4"
-        wait 1 seconds
-        broadcast "&eThis server will restart in &c&l3"
-        wait 1 seconds
-        broadcast "&eThis server will restart in &c&l2"
-        wait 1 seconds
-        broadcast "&eThis server will restart in &c&l1"
-        wait 1 seconds
-        make console execute command "/kickall &cThe Server is restarting, join back in around 30 seconds."
-        make console execute command "stop"
-
-command /maintenance:
-    permission: helixu.srestart
-    trigger:
-        loop all players:
-            if loop-player has permission "helixu.staffchat":
-                send "&b[STAFF] %player's prefix%%player's name% &ehas initiated restart &4&lMaintenance" to loop-player
-                send "&b[STAFF] %player's prefix%%player's name% &ehas initiated restart &4&lMaintenance" to loop-player
-                send "&b[STAFF] %player's prefix%%player's name% &ehas initiated restart &4&lMaintenance" to loop-player
-                send "&b[STAFF] %player's prefix%%player's name% &ehas initiated restart &4&lMaintenance" to loop-player
-        wait 1 second
-        broadcast "&eThis server will restart soon: &bMaintenance"
-        broadcast "&eYou have &a30 seconds &eto brace yourself!"
-        loop all players:
-            send title "&e&lSERVER REBOOT!" with subtitle "&aMaintenance &7(in &e30s&7)" to loop-player
-        wait 20 seconds
-        broadcast "&eThis server will restart soon: &bMaintenance"
-        broadcast "&c&lIn 10 seconds!"
-        wait 5 seconds
-        broadcast "&eThis server will restart in &c&l5"
-        wait 1 seconds
-        broadcast "&eThis server will restart in &c&l4"
-        wait 1 seconds
-        broadcast "&eThis server will restart in &c&l3"
-        wait 1 seconds
-        broadcast "&eThis server will restart in &c&l2"
-        wait 1 seconds
-        broadcast "&eThis server will restart in &c&l1"
-        wait 1 seconds
-        loop all players:
-            kick loop-player due to "&cThe Server is going down for maintenance, check ##status-updates for more information."
-        make console execute command "stop"
-
-
-
+#-------------------------------#
+#       HelixuAddons 2.0        #
+#-------------------------------#
+#load
 on load:
+    send "&dHelixuAddons &av2.0 &dby 1980s-housewife (re)loaded!"
     wait 2 hours
-            loop all players:
-            if loop-player has permission "helixu.staffchat":
-                send "&b[STAFF] Server will automatically restart." to loop-player
-        wait 1 second
+    loop all players:
+        if loop-player has permission "helixu.staff":
+            send "&3[S] &fServer will automatically restart. If the server does not have a restart script or is not in a while true script, the server will need to be manually started." to loop-player
+        send "&3[S] &fServer will automatically restart. If the server does not have a restart script or is not in a while true script, the server will need to be manually started." to console
+        wait 5 seconds
     broadcast "&eThis server will restart soon: &bScheduled Reboot"
     broadcast "&eYou have &a30 seconds &eto brace yourself!"
     loop all players:
@@ -113,89 +31,146 @@ on load:
     loop all players:
         kick loop-player due to "&cThe Server is restarting, join back in around 30 seconds."
     make console execute command "stop"
+    
+#join/quit/connect/ping
+on server ping:
+    if {mm} is set:
+        set motd to "&cMaintenance Mode."
+        stop
+    if {mm} is not set:
+        set motd to "&dHelixuAddons was here! &4&l<3"
 
+on connect:
+    if {mm} is set:
+        if player does not have permission "helixu.mm":
+            kick the player due to "&cMaintenance Mode is enabled."
+on join:
+    if player has permission "helixu.rgbypass":
+        make player execute command "/rg bypass"
+    if player has permission "helixu.staff":
+        loop all players:
+            if loop-player has permission "helixu.staff":
+                send "&3[S] &f%first 2 characters of coloured player's prefix%%player's name%&f arrived." to loop-player
+
+on quit:
+    if player has permission "helixu.staff":
+        loop all players
+        if loop-player has permission "helixu.staff":
+            send "&3[S] &f%first 2 characters of coloured player's prefix%%player's name%&f left." to loop-player
+
+#commands
+
+command /disguiseall [<text>]:
+    permission: op
+    aliases: /disall
+    trigger:
+        loop all players:
+            make console execute command "displayer %loop-player% %arg-1%"
+
+command /undisall:
+    permission: op
+    trigger:
+        loop all players:
+            make console execute command "undisplayer %loop-player%"
+
+command /srestart <text>:
+    permission: op
+    trigger:
+        if arg-1 is "gameupdate":
+            loop all players:
+                if loop-player has permission "helixu.staff":
+                    send "&3[S] %player's prefix%%player's name% &fhas initiated restart &4&lGame Update" to loop-player
+                    send "&3[S] %player's prefix%%player's name% &fhas initiated restart &4&lGame Update" to loop-player
+                    send "&3[S] %player's prefix%%player's name% &fhas initiated restart &4&lGame Update" to loop-player
+                    send "&3[S] %player's prefix%%player's name% &fhas initiated restart &4&lGame Update" to loop-player
+            wait 1 second
+            broadcast "&eThis server will restart soon: &bFor a game update"
+            broadcast "&eYou have &a30 seconds &eto brace yourself!"
+            loop all players:
+                send title "&e&lSERVER REBOOT!" with subtitle "&aFor a game update &7(in &e30s&7)" to loop-player
+            wait 20 seconds
+            broadcast "&eThis server will restart soon: &bFor a game update"
+            broadcast "&c&lIn 10 seconds!"
+            wait 5 seconds
+            broadcast "&eThis server will restart in &c&l5"
+            wait 1 seconds
+            broadcast "&eThis server will restart in &c&l4"
+            wait 1 seconds
+            broadcast "&eThis server will restart in &c&l3"
+            wait 1 seconds
+            broadcast "&eThis server will restart in &c&l2"
+            wait 1 seconds
+            broadcast "&eThis server will restart in &c&l1"
+            wait 1 seconds
+            make console execute command "/kickall &cThe Server is restarting, join back in around 30 seconds."
+            make console execute command "stop"
+        if arg-1 is not "gameupdate":
+            loop all players:
+                if loop-player has permission "helixu.staffchat":
+                    send "&3[S] %player's prefix%%player's name% &fhas initiated restart &4&lForced Reboot" to loop-player
+                    send "&3[S] %player's prefix%%player's name% &fhas initiated restart &4&lForced Reboot" to loop-player
+                    send "&3[S] %player's prefix%%player's name% &fhas initiated restart &4&lForced Reboot" to loop-player
+                    send "&3[S] %player's prefix%%player's name% &fhas initiated restart &4&lForced Reboot" to loop-player
+            wait 1 second
+            broadcast "&eThis server will restart soon: &bMaintenance"
+            broadcast "&eYou have &a30 seconds &eto brace yourself!"
+            loop all players:
+                send title "&e&lSERVER REBOOT!" with subtitle "&aForced Reboot &7(in &e30s&7)" to loop-player
+            wait 20 seconds
+            broadcast "&eThis server will restart soon: &bForced Reboot"
+            broadcast "&c&lIn 10 seconds!"
+            wait 5 seconds
+            broadcast "&eThis server will restart in &c&l5"
+            wait 1 seconds
+            broadcast "&eThis server will restart in &c&l4"
+            wait 1 seconds
+            broadcast "&eThis server will restart in &c&l3"
+            wait 1 seconds
+            broadcast "&eThis server will restart in &c&l2"
+            wait 1 seconds
+            broadcast "&eThis server will restart in &c&l1"
+            wait 1 seconds
+            loop all players:
+                kick loop-player due to "&cThe Server is going down for a forced reboot. We should hopefully be back up soon."
+            make console execute command "stop"
+        
 command /broadcast [<text>]:
-    permission: helixu.broadcast
+    permission: helixu.staff
     aliases: /bc
     trigger:
         if arg-1 is not set:
-            send "&eYou cannot send a message with no text!"
-        broadcast "&c&l%executor% &8» &c&l%arg-1%"
-
-on join:
-    if player has permission "helixu.staffchat":
-        loop all players:
-            loop-player has permission "helixu.staffchat":
-                send "&b[STAFF] &e%first 2 characters of coloured player's prefix%%player's name% &ejoined." to loop-player
-
-on quit:
-    if player has permission "helixu.staffchat":
-        loop all players:
-            loop-player has permission "helixu.staffchat":
-                send "&b[STAFF] &e%first 2 characters of coloured player's prefix%%player's name% &eleft." to loop-player
-
-command /o [<text>]:
-    aliases: /staffchat
-    permission: helixu.staffchat
+            send "You cannot send an empty message!"
+        broadcast "&d&l%player's name% &8» &c&l%arg-1%"
+        
+command /sc:
+    aliases: [<text>] /o
+    permission: helixu.staff
     trigger:
         if sender is console:
+            if arg-1 is not set:
+                send "&cYou can't send an empty mesage!" to console
             loop all players:
-                if loop-player has permission "helixu.staffchat":
-                    send "&b[STAFF] &cCONSOLE&f: &c%arg-1%" to loop-player
-            send "&b[STAFF] &cCONSOLE&f: &c%arg-1%" to console
+                if loop-player has permission "helixu.staff":
+                    send "&3[S] &cCONSOLE&f: &d%arg-1%" to loop-player
+                    send "&3[S] &cCONSOLE&f: &d%arg-1%" to console
         if sender is not console:
+            if arg-1 is not set:
+                send "&cYou can't send an empty message!"
             loop all players:
-                if loop-player has permission "helixu.staffchat":
-                    send "&b[STAFF] %player's prefix%%player's name%&f: %arg-1%" to loop-player
-            send "&b[STAFF] %player's prefix%%player's name%&f: %arg-1%" to console
-
-command /push [<player>]:
-  permission: helixu.push
-  trigger:
-    if arg-1 is not set:
-      send "&cUsage: /push (player)" to player
-    if arg-1 is set:
-      push arg-1 upwards at speed 2
-      push arg-1 backwards at speed 2
-      send "&6Player has been pushed!" to player
-
-on join:
-    if player has permission "helixu.autorgbypass":
-        make player execute command "/rg bypass"
-
-on load:
-    loop all players:
-        if loop-player has permission "helixu.staffchat":
-            send "&b[STAFF] &cHelixuAddons&f: HelixuAddons by 1980s-housewife (re)loaded!" to loop-player
-    send "&b[STAFF] &cHelixuAddons&f: HelixuAddons by 1980s-housewife (re)loaded!" to console
-
-
-command /stafftodo [<text>]:
-    permission: helixu.admin
-    trigger:
-        send "&b[STAFF] &fSet the MOTD to '%argument%<reset>'" to player
-        set {todo} to "&b[STAFF] %argument%"
-
-command /showtodo:
-    permission: helixu.admin
-    trigger:
-        send {todo} to player
-
-on join:
-    if player has permission "helixu.staffchat":
-        send {todo} to player
+                if loop-player has permission "helixu.staff":
+                    send "&3[S] %player's prefix%%player's name%&f: %arg-1%" to loop-player
+            send "&3[S] %player's prefix%%player's name%&f: %arg-1%" to console
 
 command /maintenancemode [<text>]:
     aliases: /mm
-    permission: helixu.maintenancemode
-    permission message: &cYou just got daewoo espero'd
+    permission: helixu.staff
     trigger:
         if arg 1 is "on":
             if {mm} is not set:
                 set {mm} to true
                 broadcast "&aMaintenance Mode enabled"
                 loop all players:
-                    if loop-player does not have permission "helixu.maintenancemode":
+                    if loop-player does not have permission "helixu.mm":
                         kick loop-player due to "&cMaintenance Mode was enabled. The server is closed to non-staff."
                 stop
             send "&cMaintenance Mode is already enabled."
@@ -208,17 +183,6 @@ command /maintenancemode [<text>]:
         else:
             send "&cUsage: /maintenancemode (on/off)"
 
-on connect:
-    if {mm} is set:
-        if player does not have permission "helixu.maintenancemode":
-            kick the player due to "&cMaintenance Mode is enabled."
-
-on server ping:
-    if {mm} is set:
-        set motd to "&cMaintenance Mode."
-        stop
-    if {mm} is not set:
-        set motd to "&cHelixuAddons was here! &4&l<3"
 
 command /csay [<text>]:
     trigger:
