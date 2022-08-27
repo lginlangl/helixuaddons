@@ -166,8 +166,8 @@ on join:
 on load:
     loop all players:
         if loop-player has permission "helixu.staffchat":
-            send "&b[STAFF] &cHelixuAddons&f: HelixuAddons by .ginłang#0001 (re)loaded!" to loop-player
-    send "&b[STAFF] &cHelixuAddons&f: HelixuAddons by .ginłang#0001 (re)loaded!" to console
+            send "&b[STAFF] &cHelixuAddons&f: HelixuAddons by 1980s-housewife (re)loaded!" to loop-player
+    send "&b[STAFF] &cHelixuAddons&f: HelixuAddons by 1980s-housewife (re)loaded!" to console
 
 
 command /stafftodo [<text>]:
