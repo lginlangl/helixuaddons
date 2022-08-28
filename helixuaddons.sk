@@ -54,13 +54,13 @@ on join:
 
 on quit:
     if player has permission "helixu.staff":
-        loop all players
-        if loop-player has permission "helixu.staff":
-            send "&3[S] &f%first 2 characters of coloured player's prefix%%player's name%&f left." to loop-player
+        loop all players:
+            if loop-player has permission "helixu.staff":
+                send "&3[S] &f%first 2 characters of coloured player's prefix%%player's name%&f left." to loop-player
 
 #commands
 
-command /disguiseall [<text>]:
+command /disguiseall <text>:
     permission: op
     aliases: /disall
     trigger:
@@ -73,7 +73,7 @@ command /undisall:
         loop all players:
             make console execute command "undisplayer %loop-player%"
 
-command /srestart <text>:
+command /srestart [<text>]:
     permission: op
     trigger:
         if arg-1 is "gameupdate":
@@ -112,7 +112,7 @@ command /srestart <text>:
                     send "&3[S] %player's prefix%%player's name% &fhas initiated restart &4&lForced Reboot" to loop-player
                     send "&3[S] %player's prefix%%player's name% &fhas initiated restart &4&lForced Reboot" to loop-player
             wait 1 second
-            broadcast "&eThis server will restart soon: &bMaintenance"
+            broadcast "&eThis server will restart soon: &bForced Reboot"
             broadcast "&eYou have &a30 seconds &eto brace yourself!"
             loop all players:
                 send title "&e&lSERVER REBOOT!" with subtitle "&aForced Reboot &7(in &e30s&7)" to loop-player
@@ -134,7 +134,7 @@ command /srestart <text>:
                 kick loop-player due to "&cThe Server is going down for a forced reboot. We should hopefully be back up soon."
             make console execute command "stop"
         
-command /broadcast [<text>]:
+command /broadcast <text>:
     permission: helixu.staff
     aliases: /bc
     trigger:
@@ -142,8 +142,8 @@ command /broadcast [<text>]:
             send "You cannot send an empty message!"
         broadcast "&d&l%player's name% &8» &c&l%arg-1%"
         
-command /sc:
-    aliases: [<text>] /o
+command /sc [<text>]:
+    aliases:  /o
     permission: helixu.staff
     trigger:
         if sender is console:
@@ -161,7 +161,7 @@ command /sc:
                     send "&3[S] %player's prefix%%player's name%&f: %arg-1%" to loop-player
             send "&3[S] %player's prefix%%player's name%&f: %arg-1%" to console
 
-command /maintenancemode [<text>]:
+command /maintenancemode <text>:
     aliases: /mm
     permission: helixu.staff
     trigger:
@@ -184,7 +184,7 @@ command /maintenancemode [<text>]:
             send "&cUsage: /maintenancemode (on/off)"
 
 
-command /csay [<text>]:
+command /csay <text>:
     trigger:
         if sender is console:
             if arg-1 is not set:
