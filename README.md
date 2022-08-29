@@ -1,14 +1,14 @@
 # helixuaddons
 generic skript addon i made because it wasnt worth making an entire plugin
 
-##Plugin Requirements
+## Plugin Requirements
 1: ProtocolLib
 2: LibsDisguises (for /disall)
 3:LuckPerms or any permissions plugin of choice
 4: EssentialsX
 5: Vault
 
-##Commands
+## Commands
 1: /disguiseall <mob/entity> (Disguises everyone)
 2: /undisall (Does what you expect)
 3: /o (/sc) (Staff Chat)
