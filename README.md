@@ -1,18 +1,18 @@
 # helixuaddons
-blame github for formatting this badly. view raw for eyebleach.
+generic skript addon i made because it wasnt worth making an entire plugin
 
-Plugin Requirements:
-ProtocolLib
-LibsDisguises (for /disall)
-LuckPerms or any permissions plugin of choice
-EssentialsX
-Vault
+#Plugin Requirements
+1: ProtocolLib
+2: LibsDisguises (for /disall)
+3:LuckPerms or any permissions plugin of choice
+4: EssentialsX
+5: Vault
 
-Commands:
-/disguiseall <mob/entity> (Disguises everyone)
-/undisall (Does what you expect)
-/o (/sc) (Staff Chat)
-/srestart <gameupdate/other> (Restarts the server in a hypixel skyblock-esque fashion.)
-/broadcast <text> (Broadcasts a message to the entire server)
-/maintenancemode <on/off> (Enables/Disables a "Maintenance Mode" which only allows people with permission node "helixu.mm" to join)
-/csay <text> (Allows the console to send messages to everyone else in the server)
+#Commands
+1: /disguiseall <mob/entity> (Disguises everyone)
+2: /undisall (Does what you expect)
+3: /o (/sc) (Staff Chat)
+4: /srestart <gameupdate/other> (Restarts the server in a hypixel skyblock-esque fashion.)
+5: /broadcast <text> (Broadcasts a message to the entire server)
+6: /maintenancemode <on/off> (Enables/Disables a "Maintenance Mode" which only allows people with permission node "helixu.mm" to join)
+7: /csay <text> (Allows the console to send messages to everyone else in the server)
