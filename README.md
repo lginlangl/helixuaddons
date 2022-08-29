@@ -1,5 +1,5 @@
 # helixuaddons
-generic skript addon
+blame github for formatting this badly. view raw for eyebleach.
 
 Plugin Requirements:
 ProtocolLib
