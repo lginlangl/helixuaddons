@@ -3,7 +3,7 @@
 #-------------------------------#
 #load
 on load:
-    send "&dHelixuAddons &av2.0 &dby 1980s-housewife (re)loaded!"
+    send "&dHelixuAddons &av2.0 &dby business-fox (re)loaded!"
     wait 2 hours
     loop all players:
         if loop-player has permission "helixu.staff":
