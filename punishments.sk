@@ -15,20 +15,20 @@ command /ban [<offline player>] [<text>]:
     if arg 1 is set:
       if arg 2 is set:
         kick arg 1 due to "null"
-        ban arg 1 due to "{@prefix} &cYou have been &lpermanently &cbanned from this server. &aReason: %arg 2%.&c."
-        #ban ip of arg 1 due to "{@prefix} &cYou have been &lpermanently &cbanned from this server. &aReason: %arg 2%.&c."
+        ban arg 1 due to "{@prefix} &cYou have been &lpermanently &cbanned from this server. &aReason: %arg 2%."
+        #ban ip of arg 1 due to "{@prefix} &cYou have been &lpermanently &cbanned from this server. &aReason: %arg 2%."
         loop all players:
           if loop-player has permission "helixu.staff":
             send "&3[S] &f%player's prefix%%player's name%&f has permanently banned &a%arg 1%&f for &a%arg 2%&f." to loop-player
         send "&3[S] &f%player's prefix%%player's name%&f has permanently banned &a%arg 1%&f for &a%arg 2%&f." to console
       else:
         kick arg 1 due to "null"
-        ban arg 1 due to "{@prefix} &cYou have been &lpermanently &cbanned from this server. &aNo reason was specified.&c."
-        #ban ip of arg 1 due to "{@prefix} &cYou have been &lpermanently &cbanned from this server. &aNo reason was specified.&c."
+        ban arg 1 due to "{@prefix} &cYou have been &lpermanently &cbanned from this server. &aNo reason was specified."
+        #ban ip of arg 1 due to "{@prefix} &cYou have been &lpermanently &cbanned from this server. &aNo reason was specified."
         loop all players:
           if loop-player has permission "helixu.staff":
-            send "&3[S] &f%player's prefix%%player's name%&f has permanently banned &a%arg 1%&f for &aNo reason specified.&f." to loop-player
-        send "&3[S] &f%player's prefix%%player's name%&f has permanently banned &a%arg 1%&f for &aNo reason specified.&f." to console
+            send "&3[S] &f%player's prefix%%player's name%&f has permanently banned &a%arg 1%&f for &aNo reason specified." to loop-player
+        send "&3[S] &f%player's prefix%%player's name%&f has permanently banned &a%arg 1%&f for &aNo reason specified." to console
     else:
       send "&cYou can't ban no one!"
       
@@ -39,20 +39,20 @@ command /tempban [<offline player>] [<text>]:
     if arg 1 is set:
       if arg 2 is set:
         kick arg 1 due to "null"
-        ban arg 1 due to "{@prefix} &cYou have been temporarily &cbanned from this server. Reason: &a%arg 2%&c." for 1 day
-        #ban ip of arg 1 due to "{@prefix} &cYou have been temporarily &cbanned from this server. Reason: &a%arg 2%&c." for 1 day
+        ban arg 1 due to "{@prefix} &cYou have been temporarily &cbanned from this server. Reason: &a%arg 2%" for 1 day
+        #ban ip of arg 1 due to "{@prefix} &cYou have been temporarily &cbanned from this server. Reason: &a%arg 2%" for 1 day
         loop all players:
           if loop-player has permission "helixu.staff":
-            send "&3[S] &f%player's prefix%%player's name%&f has temporarily banned &a%arg 1%&f for &a%arg 2%&f." to loop-player
-        send "&3[S] &f%player's prefix%%player's name%&f has temporarily banned &a%arg 1%&f for &a%arg 2%&f." to console
+            send "&3[S] &f%player's prefix%%player's name%&f has temporarily banned &a%arg 1%&f for &a%arg 2%" to loop-player
+        send "&3[S] &f%player's prefix%%player's name%&f has temporarily banned &a%arg 1%&f for &a%arg 2%" to console
       else:
         kick arg 1 due to "null"
-        ban arg 1 due to "{@prefix} &cYou have been temporarily &cbanned from this server. &aNo reason was specified.&c." for 1 day
-        #ban ip of arg 1 due to "{@prefix} &cYou have been temporarily &cbanned from this server. &aNo reason was specified.&c." for 1 day
+        ban arg 1 due to "{@prefix} &cYou have been temporarily &cbanned from this server. &aNo reason was specified." for 1 day
+        #ban ip of arg 1 due to "{@prefix} &cYou have been temporarily &cbanned from this server. &aNo reason was specified." for 1 day
         loop all players:
           if loop-player has permission "helixu.staff":
-            send "&3[S] &f%player's prefix%%player's name%&f has temporarily banned &a%arg 1%&f for &aNo reason specified.&f." to loop-player
-        send "&3[S] &f%player's prefix%%player's name%&f has temporarily banned &a%arg 1%&f for &aNo reason specified.&f." to console
+            send "&3[S] &f%player's prefix%%player's name%&f has temporarily banned &a%arg 1%&f for &aNo reason specified." to loop-player
+        send "&3[S] &f%player's prefix%%player's name%&f has temporarily banned &a%arg 1%&f for &aNo reason specified." to console
     else:
       send "&cYou can't ban no one!"
  
