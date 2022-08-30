@@ -16,3 +16,5 @@ generic skript addon i made because it wasnt worth making an entire plugin
 5. /broadcast <text> (Broadcasts a message to the entire server)
 6. /maintenancemode <on/off> (Enables/Disables a "Maintenance Mode" which only allows people with permission node "helixu.mm" to join)
 7. /csay <text> (Allows the console to send messages to everyone else in the server)
+8. /ban <player> <reason> (Permbans any player)
+9. /tempban <player> <reason> (Tempbans any player for 1 day)
