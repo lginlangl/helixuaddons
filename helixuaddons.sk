@@ -3,7 +3,7 @@
 #-------------------------------#
 #load
 on load:
-    send "&dHelixuAddons &av2.0 &dby business-fox (re)loaded!"
+    send "&dHelixuAddons &av2.0 &dby 1980s-housewife (re)loaded!"
     wait 2 hours
     loop all players:
         if loop-player has permission "helixu.staff":
@@ -152,7 +152,7 @@ command /sc [<text>]:
             loop all players:
                 if loop-player has permission "helixu.staff":
                     send "&3[S] &cCONSOLE&f: &d%arg-1%" to loop-player
-                    send "&3[S] &cCONSOLE&f: &d%arg-1%" to console
+            send "&3[S] &cCONSOLE&f: &d%arg-1%" to console
         if sender is not console:
             if arg-1 is not set:
                 send "&cYou can't send an empty message!"
