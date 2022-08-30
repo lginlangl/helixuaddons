@@ -50,13 +50,13 @@ on join:
     if player has permission "helixu.staff":
         loop all players:
             if loop-player has permission "helixu.staff":
-                send "&3[S] &f%first 2 characters of coloured player's prefix%%player's name%&f arrived." to loop-player
+                send "&3[S] &f%player's prefix%%player's name%&f arrived." to loop-player
 
 on quit:
     if player has permission "helixu.staff":
         loop all players:
             if loop-player has permission "helixu.staff":
-                send "&3[S] &f%first 2 characters of coloured player's prefix%%player's name%&f left." to loop-player
+                send "&3[S] &f%player's prefix%%player's name%&f left." to loop-player
 
 #commands
 
