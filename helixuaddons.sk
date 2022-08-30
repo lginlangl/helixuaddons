@@ -102,7 +102,8 @@ command /srestart [<text>]:
             wait 1 seconds
             broadcast "&eThis server will restart in &c&l1"
             wait 1 seconds
-            make console execute command "/kickall &cThe Server is restarting, join back in around 30 seconds."
+            loop all players:
+                kick loop-player due to "&cThe Server is restarting due to a game update. The server should be back within a couple minutes."
             make console execute command "stop"
         if arg-1 is not "gameupdate":
             loop all players:
