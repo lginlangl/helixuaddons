@@ -194,3 +194,19 @@ command /csay <text>:
                 broadcast "&cCONSOLE &f» &c%arg-1%"
         if sender is not console:
             send "&cYou are not console!" to player
+
+command /clearchat:
+    aliases: /cc
+    permission: helixu.staff
+    trigger:
+        loop all players:
+            if loop-player doesn't have permission "helixu.staff":
+                loop 300 times:
+                    send "" to loop-player
+            else:
+                send "&3[S] &f%player's prefix%%player's name% &fcleared the chat." to loop-player
+        broadcast "&8Chat has been cleared."
+
+
+            
+        
