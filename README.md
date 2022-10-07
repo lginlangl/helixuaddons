@@ -1,6 +1,7 @@
+# Project Archived.
+This project was archived because I don't use Skript anymore nor do I have any need for this addon anymore.
 # helixuaddons
 generic skript addon i made because it wasnt worth making an entire plugin
-
 ## Plugin Requirements
 1. ProtocolLib
 2. LibsDisguises (for /disall)
